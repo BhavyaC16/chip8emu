@@ -178,6 +178,14 @@ void Machine::print_machine_state(){
 	std::cout << "\n";
 }
 
+void Machine::setCycleRate(uint16_t rate){
+	cycleRate = rate;
+}
+
+uint16_t Machine::getCycleRate(){
+	return(cycleRate);
+}
+
 void Machine::runLoop(){
 	while(true){
 		// Update display
@@ -197,7 +205,6 @@ void Machine::runLoop(){
 
 		// Update timers
 		update_timers(std::chrono::steady_clock::now());
-
-		std::this_thread::sleep_for(std::chrono::microseconds(10));
+		std::this_thread::sleep_for(std::chrono::microseconds(getCycleRate()));
 	}
 }

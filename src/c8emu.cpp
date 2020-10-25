@@ -28,6 +28,14 @@ int main(int argc, char ** argv){
 		// Load Sprites
 		loadFile("res/sprites.bin", prog);
 		machine.setInst(prog, 0x000);
+		
+		// Set Machine cycle-rate
+		if(argc==3){
+			machine.setCycleRate((uint16_t)strtol(argv[2],NULL,10));
+		}
+		else{
+			machine.setCycleRate(10);
+		}
 	}
 	
 	// Begin instruction fetch-execute-increment cycle

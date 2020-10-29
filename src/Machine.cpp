@@ -16,6 +16,7 @@ Machine::Machine(){
 	SP = 0;
 	DT = 0;
 	ST = 0;
+	cpu_sleep_period = 10;
 }
 
 uint8_t Machine::random_byte(){
@@ -179,11 +180,7 @@ void Machine::print_machine_state(){
 }
 
 void Machine::setCycleRate(uint16_t rate){
-	cycleRate = rate;
-}
-
-uint16_t Machine::getCycleRate(){
-	return(cycleRate);
+	cpu_sleep_period = rate;
 }
 
 void Machine::runLoop(){
@@ -205,6 +202,6 @@ void Machine::runLoop(){
 
 		// Update timers
 		update_timers(std::chrono::steady_clock::now());
-		std::this_thread::sleep_for(std::chrono::microseconds(getCycleRate()));
+		std::this_thread::sleep_for(std::chrono::microseconds(cpu_sleep_period));
 	}
 }

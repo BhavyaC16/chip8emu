@@ -26,7 +26,7 @@ private:
 	Keyboard kb; // presents Keyboard related functions
 	uint16_t PC; // Program Counter
 	std::chrono::steady_clock::time_point last_tick;
-	uint16_t cycleRate; // Argument that can be added to set the cycle-rate of the emulator
+	uint16_t cpu_sleep_period; // Argument that can be added to set the cycle-rate of the emulator
 	
 	// Methods
 	void execute(uint16_t& opcode);
@@ -38,5 +38,4 @@ public:
 	void setInst(std::vector<uint8_t>& prog, uint16_t start_addr);
 	void runLoop();
 	void setCycleRate(uint16_t rate);
-	uint16_t getCycleRate();
 };

@@ -33,9 +33,6 @@ int main(int argc, char ** argv){
 		if(argc==3){
 			machine.setCycleRate((uint16_t)strtol(argv[2],NULL,10));
 		}
-		else{
-			machine.setCycleRate(10);
-		}
 	}
 	
 	// Begin instruction fetch-execute-increment cycle
